@@ -43,6 +43,14 @@ abstract class JHtmlSidebar
 	protected static $action = '';
 
 	/**
+	 * Layout to render the bar
+	 *
+	 * @var    string
+	 * @since  3.2
+	 */
+	protected static $layout = 'joomla.sidebars.submenu';
+
+	/**
 	 * Render the sidebar.
 	 *
 	 * @return  string  The necessary HTML to display the sidebar
@@ -60,11 +68,8 @@ abstract class JHtmlSidebar
 		$data->displayFilters = count($data->filters);
 		$data->hide           = JFactory::getApplication()->input->getBool('hidemainmenu');
 
-		// Create a layout object and ask it to render the sidebar
-		$layout      = new JLayoutFile('joomla.sidebars.submenu');
-		$sidebarHtml = $layout->render($data);
-
-		return $sidebarHtml;
+		// Render the layout
+		return JLayoutHelper::render(static::getLayout(), $data);
 	}
 
 	/**
@@ -148,5 +153,31 @@ abstract class JHtmlSidebar
 	public static function getAction()
 	{
 		return static::$action;
+	}
+
+	/**
+	 * Desired layout to render the bar
+	 *
+	 * @param   string  $layout  Layout name
+	 *
+	 * @return  void
+	 *
+	 * @since   3.2
+	 */
+	public static function setLayout($layout)
+	{
+		static::$layout = $layout;
+	}
+
+	/**
+	 * Get the active layout
+	 *
+	 * @return  string
+	 *
+	 * @since   3.2
+	 */
+	public static function getLayout()
+	{
+		return static::$layout;
 	}
 }

@@ -27,22 +27,25 @@ class ContentViewArticles extends JViewLegacy
 	/**
 	 * Display the view
 	 *
+	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
 	 * @return  void
 	 */
 	public function display($tpl = null)
 	{
-
 		$app = JFactory::getApplication();
 
-		$this->items		= $this->get('Items');
-		$this->pagination	= $this->get('Pagination');
-		$this->state		= $this->get('State');
-		$this->authors		= $this->get('Authors');
+		$this->items      = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
+		$this->state      = $this->get('State');
+		$this->authors    = $this->get('Authors');
+		$this->filterForm = $this->get('FilterForm');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
 			JError::raiseError(500, implode("\n", $errors));
+
 			return false;
 		}
 
@@ -65,14 +68,18 @@ class ContentViewArticles extends JViewLegacy
 		if ($this->getLayout() !== 'modal')
 		{
 			$this->addToolbar();
-			$this->sidebar = JHtmlSidebar::render();
+			//	$this->sidebar = JHtmlSidebar::render();
 		}
+
+		$this->activeFilters = $this->get('ActiveFilters');
 
 		parent::display($tpl);
 	}
 
 	/**
 	 * Add the page title and toolbar.
+	 *
+	 * @return  void
 	 *
 	 * @since   1.6
 	 */
@@ -192,16 +199,16 @@ class ContentViewArticles extends JViewLegacy
 	protected function getSortFields()
 	{
 		return array(
-			'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
-			'a.state' => JText::_('JSTATUS'),
-			'a.title' => JText::_('JGLOBAL_TITLE'),
+			'a.ordering'     => JText::_('JGRID_HEADING_ORDERING'),
+			'a.state'        => JText::_('JSTATUS'),
+			'a.title'        => JText::_('JGLOBAL_TITLE'),
 			'category_title' => JText::_('JCATEGORY'),
-			'access_level' => JText::_('JGRID_HEADING_ACCESS'),
-			'a.created_by' => JText::_('JAUTHOR'),
-			'language' => JText::_('JGRID_HEADING_LANGUAGE'),
-			'a.created' => JText::_('JDATE'),
-			'a.id' => JText::_('JGRID_HEADING_ID'),
-			'a.featured' => JText::_('JFEATURED')
+			'access_level'   => JText::_('JGRID_HEADING_ACCESS'),
+			'a.created_by'   => JText::_('JAUTHOR'),
+			'language'       => JText::_('JGRID_HEADING_LANGUAGE'),
+			'a.created'      => JText::_('JDATE'),
+			'a.id'           => JText::_('JGRID_HEADING_ID'),
+			'a.featured'     => JText::_('JFEATURED')
 		);
 	}
 }
