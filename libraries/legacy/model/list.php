@@ -135,7 +135,7 @@ class JModelList extends JModelLegacy
 			{
 				$filterName = 'filter.' . $filter;
 
-				if (property_exists($this->state, $filterName) && !empty($this->state->{$filterName}))
+				if (property_exists($this->state, $filterName) && (!empty($this->state->{$filterName}) || is_numeric($this->state->{$filterName})))
 				{
 					$activeFilters[$filter] = $this->state->get($filterName);
 				}
