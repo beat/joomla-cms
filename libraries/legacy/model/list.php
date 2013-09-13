@@ -60,6 +60,13 @@ class JModelList extends JModelLegacy
 	protected $filterFormName = null;
 
 	/**
+	 * Associated HTML form
+	 *
+	 * @var  string
+	 */
+	protected $htmlFormName = 'adminForm';
+
+	/**
 	 * Constructor.
 	 *
 	 * @param   array  $config  An optional associative array of configuration settings.
@@ -498,6 +505,11 @@ class JModelList extends JModelLegacy
 
 					$this->setState('list.' . $name, $value);
 				}
+			}
+			else
+			{
+				$this->setState('list.ordering', $ordering);
+				$this->setState('list.direction', $direction);
 			}
 		}
 		else

@@ -68,7 +68,6 @@ class ContentViewArticles extends JViewLegacy
 		if ($this->getLayout() !== 'modal')
 		{
 			$this->addToolbar();
-			//	$this->sidebar = JHtmlSidebar::render();
 		}
 
 		$this->activeFilters = $this->get('ActiveFilters');
