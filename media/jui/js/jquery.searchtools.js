@@ -4,13 +4,14 @@
 	var pluginName = "searchtools";
 
 	var defaults = {
+		mainContainerSelector   : '.js-stools',
 		clearBtnSelector        : '.js-stools-btn-clear',
 		searchBtnSelector       : '.js-stools-btn-search',
 		filterBtnSelector       : '.js-stools-btn-filter',
 		containerSelector       : '.js-stools-container',
-		filterContainerSelector : '.js-stools-container-filter',
+		filterContainerSelector : '.stools-filters',
 		orderBtnSelector        : '.js-stools-btn-order',
-		orderContainerSelector  : '.js-stools-container-order',
+		orderContainerSelector  : '.stools-list',
 		searchInputSelector     : '.js-stools-search-string',
 		filtersApplied          : false,
 		searchString            : null
@@ -33,8 +34,9 @@
 		this.orderButton     = $(this.options.orderBtnSelector);
 		this.orderContainer  = $(this.options.orderContainerSelector);
 
-		// Global container
-		this.container       = $(this.options.containerSelector);
+		// Main container
+		this.mainContainer = $(this.options.mainContainerSelector);
+		this.container     = $(this.options.containerSelector);
 
 		// Search
 		this.searchButton    = $(this.options.searchBtnSelector);
@@ -121,7 +123,7 @@
 		getFilters: function () {
 			var self = this;
 
-			return self.container.find('select');
+			return self.mainContainer.find('select');
 		},
 		hideContainer: function () {
 			var self = this;

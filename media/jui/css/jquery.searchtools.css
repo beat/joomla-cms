@@ -18,12 +18,12 @@
 	text-align: left;
 }
 
-.js-stools-container select.active,
-.js-stools-container .chzn-container.active .chzn-single{
+.js-stools select.active,
+.js-stools .chzn-container.active .chzn-single{
 	border: 2px solid #2384D3;
 }
 
-.js-stools-container .chzn-container-single .chzn-single span {
+.js-stools .chzn-container-single .chzn-single span {
 	overflow: visible;
 }
 

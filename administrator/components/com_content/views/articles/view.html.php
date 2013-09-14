@@ -139,53 +139,6 @@ class ContentViewArticles extends JViewLegacy
 		}
 
 		JToolbarHelper::help('JHELP_CONTENT_ARTICLE_MANAGER');
-
-		JHtmlSidebar::setAction('index.php?option=com_content&view=articles');
-
-		JHtmlSidebar::addFilter(
-			JText::_('JOPTION_SELECT_PUBLISHED'),
-			'filter_published',
-			JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
-		);
-
-		JHtmlSidebar::addFilter(
-			JText::_('JOPTION_SELECT_CATEGORY'),
-			'filter_category_id',
-			JHtml::_('select.options', JHtml::_('category.options', 'com_content'), 'value', 'text', $this->state->get('filter.category_id'))
-		);
-
-		JHtmlSidebar::addFilter(
-			JText::_('JOPTION_SELECT_MAX_LEVELS'),
-			'filter_level',
-			JHtml::_('select.options', $this->f_levels, 'value', 'text', $this->state->get('filter.level'))
-		);
-
-		JHtmlSidebar::addFilter(
-			JText::_('JOPTION_SELECT_ACCESS'),
-			'filter_access',
-			JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
-		);
-
-		JHtmlSidebar::addFilter(
-			JText::_('JOPTION_SELECT_AUTHOR'),
-			'filter_author_id',
-			JHtml::_('select.options', $this->authors, 'value', 'text', $this->state->get('filter.author_id'))
-		);
-
-		if (isset(JFactory::getApplication()->languages_enabled))
-		{
-			JHtmlSidebar::addFilter(
-				JText::_('JOPTION_SELECT_LANGUAGE'),
-				'filter_language',
-				JHtml::_('select.options', JHtml::_('contentlanguage.existing', true, true), 'value', 'text', $this->state->get('filter.language'))
-			);
-		}
-
-		JHtmlSidebar::addFilter(
-		JText::_('JOPTION_SELECT_TAG'),
-		'filter_tag',
-		JHtml::_('select.options', JHtml::_('tag.options', true, true), 'value', 'text', $this->state->get('filter.tag'))
-		);
 	}
 
 	/**

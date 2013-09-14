@@ -11,12 +11,12 @@ defined('JPATH_BASE') or die;
 
 $data = $displayData;
 ?>
-<div class="stools clearfix">
+<div class="stools js-stools clearfix">
 	<div id="filter-bar" class="hidden-phone row-fluid">
 		<div class="span6">
 			<?php echo JLayoutHelper::render('joomla.searchtools.default.bar', $data); ?>
 		</div>
-		<div class="span6 hidden-phone stools-ordering js-stools-container-order">
+		<div class="span6 hidden-phone stools-list js-stools-container-order">
 			<?php echo JLayoutHelper::render('joomla.searchtools.default.list', $data); ?>
 		</div>
 	</div>
