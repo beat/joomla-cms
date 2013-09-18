@@ -51,7 +51,7 @@ class ContentModelFeatured extends ContentModelArticles
 				'fp.ordering',
 			);
 
-			if (JFactory::getApplication()->item_associations)
+			if (isset(JFactory::getApplication()->item_associations))
 			{
 				$config['filter_fields'][] = 'association';
 			}

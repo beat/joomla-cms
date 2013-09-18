@@ -180,13 +180,13 @@ $assoc = isset($app->item_associations);
 									<?php
 									// Create dropdown items
 									$action = $archived ? 'unarchive' : 'archive';
-									JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'newsfeeds');
+									JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
 
 									$action = $trashed ? 'untrash' : 'trash';
-									JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'newsfeeds');
+									JHtml::_('actionsdropdown.' . $action, 'cb' . $i, 'articles');
 
 									// Render dropdown list
-									echo JHtml::_('actionsdropdown.render', $this->escape($item->name));
+									echo JHtml::_('actionsdropdown.render', $this->escape($item->title));
 									?>
 								</div>
 							</td>
